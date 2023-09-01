@@ -18,31 +18,61 @@ const slides = [
   },
 ];
 
+const paragraph = document.querySelector("#banner p");
+const image = document.querySelector(".banner-img");
 const btnLeft = document.querySelector(".arrow_left");
 const btnRight = document.querySelector(".arrow_right");
-const items = document.querySelectorAll("img");
-const nbSlide = items.length;
-let count = 0;
+let currentIndex = 0;
 
-btnLeft.addEventListener("click", () => {
-  // console.log("test bouton gauche");
-});
-
-btnRight.addEventListener("click", () => {
-  // alert("alert test bouton droit");
-});
-
-function slideSuivant() {
-  items[count].classList.remove("active");
-
-  if (count < nbSlide - 1) {
-    count++;
-  } else {
-    count = 0;
-  }
-
-  items[count].classList.add("active");
-  console.log(count);
+/*** Fonction qui permet de modifier la src de mon image + l'alt (tagLine) ***/
+function updateSlide() {
+  const slide = slides[currentIndex];
+  image.src = "./assets/images/slideshow/" + slide.image;
+  paragraph.innerHTML = slide.tagLine;
 }
 
-btnRight.addEventListener("click", slideSuivant);
+/*** Fonction qui permet de supprimer tout les dot_selected puis d'ajouter le dot_selected seulement sur le slide séléctionné ****/
+function dotSelected() {
+  const dotElements = document.querySelectorAll(".dot");
+  dotElements.forEach((dot) => {
+    dot.classList.remove("dot_selected");
+  });
+  dotElements[currentIndex].classList.add("dot_selected");
+}
+
+/*** Flêche de gauche ***/
+btnLeft.addEventListener("click", () => {
+  // console.log("test bouton gauche");
+  currentIndex--;
+  if (currentIndex < 0) {
+    currentIndex = slides.length - 1;
+  }
+  updateSlide();
+  dotSelected();
+});
+
+/*** Flêche de droite ***/
+btnRight.addEventListener("click", () => {
+  // alert("alert test bouton droit");
+  currentIndex++;
+  if (currentIndex >= slides.length) {
+    currentIndex = 0;
+  }
+  updateSlide();
+  dotSelected();
+});
+
+const dots = document.querySelector(".dots");
+// console.log(dots);
+
+slides.forEach((slide, i) => {
+  // console.log(slide, i);
+  const dot = document.createElement("div");
+  dot.classList.add("dot");
+  dots.appendChild(dot);
+
+  /** Cette action sert à dire qu'au rechargement de la page le dot_selected apparait sur la 1ère image **/
+  if (i === 0) {
+    dot.classList.add("dot_selected");
+  }
+});
