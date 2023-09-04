@@ -31,7 +31,7 @@ function updateSlide() {
   paragraph.innerHTML = slide.tagLine;
 }
 
-/*** Fonction qui permet de supprimer tout les dot_selected puis d'ajouter le dot_selected seulement sur le slide séléctionné ****/
+/*** Fonction qui permet de supprimer tous les dot_selected puis d'ajouter le dot_selected seulement sur le slide séléctionné ****/
 function dotSelected() {
   const dotElements = document.querySelectorAll(".dot");
   dotElements.forEach((dot) => {
@@ -64,14 +64,14 @@ btnRight.addEventListener("click", () => {
 
 const dots = document.querySelector(".dots");
 // console.log(dots);
-
+// Dans cette fonction je crée une <div> à laquelle j'attribut la class (dot)
 slides.forEach((slide, i) => {
   // console.log(slide, i);
   const dot = document.createElement("div");
   dot.classList.add("dot");
   dots.appendChild(dot);
 
-  /** Cette action sert à dire qu'au rechargement de la page le dot_selected apparait sur la 1ère image **/
+  /** Cette action sert à dire qu'au rechargement de la page le dot_selected apparait sur la 1ère image de mon slide**/
   if (i === 0) {
     dot.classList.add("dot_selected");
   }
