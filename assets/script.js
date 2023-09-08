@@ -41,6 +41,7 @@ function dotSelected() {
 }
 
 /*** Flêche de gauche ***/
+// Au clic sur mon bouton de gauche je me dirige vers les slides précedents et si mon currentIndex est inférieur à 0 alors le currentIndex = le nombre de slide -1.
 btnLeft.addEventListener("click", () => {
   // console.log("test bouton gauche");
   currentIndex--;
@@ -52,6 +53,7 @@ btnLeft.addEventListener("click", () => {
 });
 
 /*** Flêche de droite ***/
+// Au clic sur mon bouton de droite je me dirige vers les slides suivants. Si mon currentIndex est supérieur ou égal au nombre de slide max alors il retourne au slide 0
 btnRight.addEventListener("click", () => {
   // alert("alert test bouton droit");
   currentIndex++;
@@ -65,7 +67,7 @@ btnRight.addEventListener("click", () => {
 const dots = document.querySelector(".dots");
 // console.log(dots);
 // Dans cette fonction je crée une <div> à laquelle j'attribut la class (dot)
-slides.forEach((slide, i) => {
+slides.forEach((_, i) => {
   // console.log(slide, i);
   const dot = document.createElement("div");
   dot.classList.add("dot");
