@@ -41,7 +41,7 @@ function dotSelected() {
 }
 
 /*** Flêche de gauche ***/
-// Au clic sur mon bouton de gauche je me dirige vers les slides précedents et si mon currentIndex est inférieur à 0 alors le currentIndex = le nombre de slide -1.
+// Au clic sur mon bouton de gauche je me dirige vers les slides précedents et si mon currentIndex est inférieur à 0 alors le currentIndex ira à la fin de mon tableau -1 car il faut toujours retirer 1 slide étant donné qu'on démarre le 1er slide à 0.
 btnLeft.addEventListener("click", () => {
   // console.log("test bouton gauche");
   currentIndex--;
@@ -53,7 +53,7 @@ btnLeft.addEventListener("click", () => {
 });
 
 /*** Flêche de droite ***/
-// Au clic sur mon bouton de droite je me dirige vers les slides suivants. Si mon currentIndex est supérieur ou égal au nombre de slide max alors il retourne au slide 0
+// Au clic sur mon bouton de droite je me dirige vers les slides suivants. Si mon currentIndex est supérieur ou égal au nombre de slide max alors il retourne au slide 0 (mon premier slide)
 btnRight.addEventListener("click", () => {
   // alert("alert test bouton droit");
   currentIndex++;
